@@ -3,7 +3,19 @@
 
 class Sector {
 public:
+    enum class Terrain {
+        Invalid,
+        Grassland,
+        Forest
+    };
+
     Sector();
+
+    Terrain terrain() const;
+    void setTerrain(Terrain terrain);
+
+private:
+    Terrain terrain_;
 };
 
 #endif
