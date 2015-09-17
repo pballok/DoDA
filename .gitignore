@@ -1,4 +1,5 @@
 build-*
 *.pro.user
 doda_server
-
+*.log
+*.ini

@@ -2,5 +2,5 @@
 
 class DoDAPreferences : public Preferences {
 public:
-    DoDAPreferences() : Preferences("DoDAServer", "1.0.0") { }
+    DoDAPreferences() : Preferences("DoDAServer", "0.1.0") { }
 };
