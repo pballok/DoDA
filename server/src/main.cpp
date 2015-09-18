@@ -3,7 +3,7 @@
 #include <logger.h>
 
 #include "dodapreferences.h"
-#include "mainwindow.h"
+#include "wndmain.h"
 
 int main(int argc, char** argv) {
     QApplication app(argc, argv);
@@ -11,14 +11,14 @@ int main(int argc, char** argv) {
     DoDAPreferences prefs;
     prefs.load();
 
-    the_logger = std::make_shared<FileLogger>(std::make_unique<ConsoleLogger>(std::make_unique<Logger>(),
+    the_logger = std::make_unique<FileLogger>(std::make_unique<ConsoleLogger>(std::make_unique<Logger>(),
                                                                               prefs.console_level()),
                                               prefs.file_level(),
                                               prefs.app_name().toStdString() + ".log");
 
     LOG(INFO) << prefs.app_name().toStdString() << " version " << prefs.version().toStdString() << " started";
 
-    MainWindow mainWin;
+    WndMain mainWin(prefs);
     mainWin.setWindowTitle(prefs.app_name() + " " + prefs.version());
     mainWin.show();
 

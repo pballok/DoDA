@@ -34,6 +34,7 @@
      <string>&amp;Tools</string>
     </property>
     <addaction name="actMaintenance"/>
+    <addaction name="actPreferences"/>
    </widget>
    <addaction name="menu_Game"/>
    <addaction name="menu_Tools"/>
@@ -47,6 +48,11 @@
   <action name="actMaintenance">
    <property name="text">
     <string>&amp;Maintenance ...</string>
+   </property>
+  </action>
+  <action name="actPreferences">
+   <property name="text">
+    <string>&amp;Preferences ...</string>
    </property>
   </action>
  </widget>
