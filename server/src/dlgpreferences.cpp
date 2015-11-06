@@ -1,5 +1,6 @@
 #include <QSqlDatabase>
 #include <QSqlError>
+#include <QMessageBox>
 
 #include <severity.h>
 #include <tracer.h>
@@ -31,7 +32,7 @@ DlgPreferences::DlgPreferences(DoDAPreferences &prefs, QWidget *parent) : QDialo
 }
 
 void DlgPreferences::on_dlgPreferences_accepted() {
-    TRACE_IN;
+    TRACE_ME();
 
     bool log_levels_changed{false};
     bool db_prefs_changed{false};
@@ -62,17 +63,45 @@ void DlgPreferences::on_dlgPreferences_accepted() {
                                                   prefs_.file_level(),
                                                   prefs_.app_name().toStdString() + ".log");
 
-    if(log_levels_changed || db_prefs_changed) prefs_.save();
+    if(db_prefs_changed) {
+        QSqlDatabase default_db = QSqlDatabase::database(QSqlDatabase::defaultConnection, false);
 
-    TRACE_OUT;
+        default_db.close();
+        default_db.setHostName(prefs_.db_host());
+        default_db.setDatabaseName(prefs_.db_name());
+        default_db.setUserName(prefs_.db_user());
+        default_db.setPassword(prefs_.db_password());
+        default_db.open();
+    }
+
+    if(log_levels_changed || db_prefs_changed) prefs_.save();
 }
 
 void DlgPreferences::on_psbTestConnection_clicked() {
-    QSqlDatabase test_db = QSqlDatabase::addDatabase("QMYSQL", "connection_test");
-    test_db.setDatabaseName(prefs_.db_name());
-    test_db.setHostName(prefs_.db_host());
-    test_db.setUserName(prefs_.db_user());
-    test_db.setPassword(prefs_.db_password());
-    if(test_db.open()) LOG(DEBUG) << "Works";
-    else LOG(DEBUG) << "Fails: " << test_db.lastError().text().toStdString();
+    TRACE_ME();
+
+    {
+        QSqlDatabase test_db = QSqlDatabase::addDatabase("QMYSQL", "connection_test");
+
+        test_db.setDatabaseName(ui_.ledDBName->text());
+        test_db.setHostName(ui_.ledDBHost->text());
+        test_db.setUserName(ui_.ledDBUser->text());
+        test_db.setPassword(ui_.ledDBPassword->text());
+        LOG(DEBUG) << "TestConnection db_name: \"" << ui_.ledDBName->text().toStdString() << "\", "
+                   << "host: \"" << ui_.ledDBHost->text().toStdString() << "\", "
+                   << "user: \"" << ui_.ledDBUser->text().toStdString() << "\", "
+                   << "password: \"" << ui_.ledDBPassword->text().toStdString() << "\"";
+
+        test_db.open();
+        if(test_db.isOpen()) {
+            LOG(DEBUG) << "TestConnection success";
+            QMessageBox::information(this, "Database Connection", "Testing Database Connection was SUCCESSFUL.");
+            test_db.close();
+        } else {
+            LOG(DEBUG) << "TestConnection failed: " << test_db.lastError().text().toStdString();
+            QMessageBox::information(this, "Database Connection", "Testing Database Connection FAILED.");
+        }
+    }
+
+    QSqlDatabase::removeDatabase("connection_test");
 }

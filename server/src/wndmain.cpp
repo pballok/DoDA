@@ -1,5 +1,8 @@
+#include "tracer.h"
+
 #include "wndmain.h"
 #include "dlgpreferences.h"
+#include "dlgmaintenance.h"
 
 WndMain::WndMain(DoDAPreferences &prefs, QWidget *parent) : QMainWindow(parent),
                                                             prefs_{prefs} {
@@ -7,6 +10,15 @@ WndMain::WndMain(DoDAPreferences &prefs, QWidget *parent) : QMainWindow(parent),
 }
 
 void WndMain::on_actPreferences_triggered(bool) {
+    TRACE_ME();
+
     DlgPreferences preferences_dialog(prefs_, this);
     preferences_dialog.exec();
+}
+
+void WndMain::on_actMaintenance_triggered(bool) {
+    TRACE_ME();
+
+    DlgMaintenance maintenance_dialog(prefs_, this);
+    maintenance_dialog.exec();
 }
