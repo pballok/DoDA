@@ -20,7 +20,8 @@ HEADERS      = ../../../qtframework2/*.h \
                idbpreferences.h \
                wndmain.h
 
-SOURCES      = ../../../qtframework2/logger.cpp \
+SOURCES      = ../../../qtframework2/loggedquery.cpp \
+               ../../../qtframework2/logger.cpp \
                ../../../qtframework2/preferences.cpp \
                ../../../qtframework2/severity.cpp \
                ../../../qtframework2/tracer.cpp \

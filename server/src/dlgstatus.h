@@ -10,8 +10,12 @@ class DlgStatus : public QDialog {
 public:
     explicit DlgStatus(QWidget* parent = 0);
 
+    void addStatusEntry(const QString& text, bool status);
+    bool overallStatus() const { return overall_status_; }
+
 private:
     Ui::dlgStatus ui_;
+    bool overall_status_{true};
 };
 
 #endif

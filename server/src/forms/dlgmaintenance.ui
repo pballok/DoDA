@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>281</width>
-    <height>208</height>
+    <height>278</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,9 +56,23 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="psbRecreate">
+        <widget class="QPushButton" name="psbWipe">
          <property name="text">
-          <string>Recreate Structure</string>
+          <string>Wipe Database</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="psbCreateMissing">
+         <property name="text">
+          <string>Create missing tables</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="psbTestData">
+         <property name="text">
+          <string>Reinitialise with Test Data</string>
          </property>
         </widget>
        </item>
@@ -91,7 +105,7 @@
  <tabstops>
   <tabstop>tbwMaintenance</tabstop>
   <tabstop>psbCheck</tabstop>
-  <tabstop>psbRecreate</tabstop>
+  <tabstop>psbWipe</tabstop>
  </tabstops>
  <resources/>
  <connections>
