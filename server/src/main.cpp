@@ -4,7 +4,7 @@
 #include <logger.h>
 
 #include "dodapreferences.h"
-#include "wndmain.h"
+#include "ui/wndmain.h"
 
 int main(int argc, char** argv) {
     QApplication app(argc, argv);

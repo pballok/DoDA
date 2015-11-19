@@ -7,7 +7,6 @@ DlgCRUD::DlgCRUD(const QString &table_name, QWidget *parent) : QDialog(parent) {
 
     ui_.setupUi(this);
 
-    setWindowTitle("Data: " + table_name);
     ui_.bbxButtons->addButton("&Close", QDialogButtonBox::RejectRole);
 
     table_model_.setTable(table_name);

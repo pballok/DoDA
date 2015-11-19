@@ -14,23 +14,25 @@ FORMS        = forms/dlgcrud.ui \
 
 
 HEADERS      = ../../../qtframework2/*.h \
-               dlgcrud.h \
-               dlgstatus.h \
-               dlgmaintenance.h \
-               dlgpreferences.h \
+               ui/dlgcrud.h \
+               ui/dlgcrudmaps.h \
+               ui/dlgstatus.h \
+               ui/dlgmaintenance.h \
+               ui/dlgpreferences.h \
+               ui/wndmain.h \
                dodapreferences.h \
-               idbpreferences.h \
-               wndmain.h
+               idbpreferences.h
 
 SOURCES      = ../../../qtframework2/loggedquery.cpp \
                ../../../qtframework2/logger.cpp \
                ../../../qtframework2/preferences.cpp \
                ../../../qtframework2/severity.cpp \
                ../../../qtframework2/tracer.cpp \
-               dlgcrud.cpp \
-               dlgstatus.cpp \
-               dlgmaintenance.cpp \
-               dlgpreferences.cpp \
+               ui/dlgcrud.cpp \
+               ui/dlgcrudmaps.cpp \
+               ui/dlgstatus.cpp \
+               ui/dlgmaintenance.cpp \
+               ui/dlgpreferences.cpp \
+               ui/wndmain.cpp \
                dodapreferences.cpp \
-               main.cpp \
-               wndmain.cpp
+               main.cpp

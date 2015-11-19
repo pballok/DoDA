@@ -3,7 +3,7 @@
 #include "wndmain.h"
 #include "dlgpreferences.h"
 #include "dlgmaintenance.h"
-#include "dlgcrud.h"
+#include "dlgcrudmaps.h"
 
 WndMain::WndMain(DoDAPreferences &prefs, QWidget *parent) : QMainWindow(parent),
                                                             prefs_{prefs} {
@@ -27,6 +27,6 @@ void WndMain::on_actMaintenance_triggered(bool) {
 void WndMain::on_actMaps_triggered(bool) {
     TRACE_ME();
 
-    DlgCRUD maps_dialog("maps", this);
+    DlgCRUDMaps maps_dialog(this);
     maps_dialog.exec();
 }
