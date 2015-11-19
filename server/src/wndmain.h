@@ -13,6 +13,7 @@ public:
 protected slots:
     void on_actPreferences_triggered(bool);
     void on_actMaintenance_triggered(bool);
+    void on_actMaps_triggered(bool);
 
 private:
     Ui::wndMain      ui_;

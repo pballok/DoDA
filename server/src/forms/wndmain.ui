@@ -36,7 +36,14 @@
     <addaction name="actMaintenance"/>
     <addaction name="actPreferences"/>
    </widget>
+   <widget class="QMenu" name="menu_Data">
+    <property name="title">
+     <string>&amp;Data</string>
+    </property>
+    <addaction name="actMaps"/>
+   </widget>
    <addaction name="menu_Game"/>
+   <addaction name="menu_Data"/>
    <addaction name="menu_Tools"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -53,6 +60,11 @@
   <action name="actPreferences">
    <property name="text">
     <string>&amp;Preferences ...</string>
+   </property>
+  </action>
+  <action name="actMaps">
+   <property name="text">
+    <string>&amp;Maps ...</string>
    </property>
   </action>
  </widget>
