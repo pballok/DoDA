@@ -11,7 +11,7 @@ class DlgCRUD : public QDialog {
 public:
     explicit DlgCRUD( const QString& table_name, QWidget* parent = 0);
 
-private:
+protected:
     QSqlTableModel table_model_;
     Ui::dlgCRUD    ui_;
 };
